@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Aula 7 - Formulário de login{% endblock %}
+
+{% block content %}
+
+
+{% if user.is_authenticated %}
+<h3>Bem vindo {{ user.username }}</h3>
+{% else %}
+<h3>Faça seu login</h3>
+<form action="." method="post">{% csrf_token %}
+  {{ form.as_p }}
+  <input type="hidden" name="next" value="{{ next }}" />
+  <p><input type="submit" value="Enviar" /></p>
+</form>
+{% endif %}
+
+
+
+{% endblock %}
+

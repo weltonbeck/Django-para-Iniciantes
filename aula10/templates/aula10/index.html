@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+{% load aula10_tags %}
+
+{% block title %}Aula 10{% endblock %}
+
+{% block content %}
+	<p>
+		<a href="{% static "aula10/teste.txt" %}" > link </a>
+	</p>
+	
+	{% if user.is_authenticated %}
+		<p>Usuário logado</p>
+	{% else %}
+		<p>Faça seu login</p>
+	{% endif %}
+
+	{{ STATIC_URL }}
+
+	{% if request.method == 'GET' %}
+		<p>Foi um GET!!</p>
+	{% endif %}
+
+	{% if settings.DEBUG %}
+		<p>Estamos em desenvolvimento</p>
+	{% endif %}
+
+	<p> O nome é {{ nome|swapcase }}</p>
+
+	<p>
+		{{ namehtml }} <br>
+		{{ namehtml|safe }} <br>
+		{{ nome|bold|safe }}
+	</p>
+
+	{# 
+	<p>
+		{{ nome|add_tag:"b"|safe }} 
+	</p>
+	#}
+
+	{% get_user "admin" as user_data %}
+	{{ user_data.username }}
+
+	{% show_users %}
+  
+{% endblock %}

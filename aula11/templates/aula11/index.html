@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Aula 11{% endblock %}
+
+{% block content %}
+	<h2> Últimos posts</h2>
+	{% for post in post_list %}
+		<h4>{{ post.title }}</h4>
+		{{ post.body }}
+		<p>Categoria: {{ post.category.name }}</p>
+	{% endfor %}
+{% endblock %}

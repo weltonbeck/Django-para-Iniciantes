@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block  title %} Teste {% endblock %}
+
+{% block  content %}
+	{% include 'aula4/menu.html'  %}
+
+	{% if nome %}
+	<p> O nome é {{ nome|upper }}</p>
+	{% endif %}
+	{% if idade %}
+	<p> A idade é {{ idade }}</p>
+	{% endif %}
+
+	{% if lista %}
+		{% for nomelista in lista %}
+		<p>{{ nomelista }}</p>
+		{% endfor %}
+	{% else %}
+		<p>Não tem lista</p>
+	{% endif %}
+{% endblock %}
